@@ -13,9 +13,6 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (for icons) -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
   <!-- AOS Animation CSS (keep only latest version) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
@@ -39,23 +36,48 @@
 <body class="bg-[#0D1117] text-white">
 
   <!-- Header -->
-  <header class="flex justify-between items-center px-6 py-4 bg-[#0D1117] border-b border-gray-700">
-    <h1 class="text-green-400 text-lg font-bold flex items-center gap-2">
-      <i data-feather="shield"></i> Najeel Sharif
-    </h1>
-    <nav class="space-x-4 text-sm text-gray-300 hidden sm:block">
-      <a href="#experience" class="hover:text-white">Experience</a>
-      <a href="#projects" class="hover:text-white">Projects</a>
-      <!--<a href="#achievements" class="hover:text-white">Achievements</a>-->
-      <a href="#skills" class="hover:text-white">Skills</a>
-      <a href="#contact" class="hover:text-white">Contact</a>
-    </nav>
-    <a href="docs/Najeel Sharif CV Security Analyst.pdf" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-600 px-3 py-1 rounded text-sm text-white hover:bg-green-500 hover:text-black transition">View CV 
+  <header class="flex justify-between items-center px-4 sm:px-6 py-4 bg-[#0D1117] border-b border-gray-700 relative">
+
+  <h1 class="text-green-400 text-lg font-bold flex items-center gap-2">
+    <i data-feather="shield"></i> Najeel Sharif
+  </h1>
+
+  <!-- Desktop Menu -->
+  <nav class="hidden sm:flex space-x-4 text-sm text-gray-300">
+    <a href="#experience" class="hover:text-white">Experience</a>
+    <a href="#projects" class="hover:text-white">Projects</a>
+    <a href="#skills" class="hover:text-white">Skills</a>
+    <a href="#contact" class="hover:text-white">Contact</a>
+  </nav>
+
+  <!-- Right Side -->
+  <div class="flex items-center gap-3">
+
+    <a href="docs/Najeel Sharif CV Security Analyst.pdf"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="bg-gray-800 border border-gray-600 px-3 py-1 rounded text-sm text-white hover:bg-green-500 hover:text-black transition">
+       View CV
     </a>
-  </header>
+
+    <!-- Mobile Button -->
+<button id="menu-btn" class="sm:hidden text-white" aria-label="Open menu">
+  <i data-feather="menu"></i>
+</button>
+  </div>
+
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden sm:hidden bg-[#161B22] px-6 py-4 space-y-3 text-gray-300">
+  <a href="#experience" class="block hover:text-white">Experience</a>
+  <a href="#projects" class="block hover:text-white">Projects</a>
+  <a href="#skills" class="block hover:text-white">Skills</a>
+  <a href="#contact" class="block hover:text-white">Contact</a>
+</div>
 
   <!-- Hero Section -->
-  <section class="min-h-screen flex items-center justify-center">
+  <section class="min-h-[90vh] flex items-center justify-center">
     <div class="flex flex-col md:flex-row items-center gap-10">
       <!-- Text Content -->
       <div class="text-center md:text-left">
@@ -63,7 +85,7 @@
         <h2 class="text-xl text-blue-400 mb-4">Security Analyst</h2>
         <p class="text-gray-400 max-w-md mb-6">
           I am a BCA graduate with hands-on experience as an Information Security Trainee at ESAF Small Finance Bank. 
-          I am seeking an entry-level role in the field of cybersecurity where I can apply my skills and contribute to the organization's security and growth.  
+          I am seeking an entry-level cybersecurity role where I can apply my skills and contribute to the organization's security and growth.  
           I possess strong problem-solving abilities, risk assessment skills, and a solid understanding of cybersecurity principles, 
           which enable me to effectively analyze and respond to security threats to help protect organizations.
         </p>
@@ -75,7 +97,7 @@
       <!-- Profile Image -->
       <div class="relative w-48 h-48">
         <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-black blur-2xl z-0 animate-pulse"></div>
-        <img src="images/profile1.png" alt="Profile picture" class="rounded-full w-48 h-48 object-cover border-4 border-gray-800 relative z-10" />
+        <img src="images/profile1.png" loading="lazy" alt="Profile picture" class="rounded-full w-48 h-48 object-cover border-4 border-gray-800 relative z-10" />
       </div>
     </div>
   </section>
@@ -99,8 +121,8 @@
           <p class="text-gray-400 text-sm">2024</p>
           <p class="text-gray-300 mt-2 text-sm">
             Coordinated with security vendors and the IT department for the VAPT of web applications. 
-            Collaborated with IT to address and resolve vulnerabilities identified in VAPT reports, improving organizations security posture. 
-            Managed compliance tasks, including the submission of RBImandated quarterly reports through the Daksh portal and monthly reports, such as CSK (Cyber Swatch Kendra) report.
+            Collaborated with IT to address and resolve vulnerabilities identified in VAPT reports, improving the organization's security posture. 
+            Managed compliance tasks, including the submission of RBI-mandated quarterly reports through the Daksh portal and monthly reports, such as CSK (Cyber Swatch Kendra) report.
           </p>
         </div>
       </div>
@@ -356,8 +378,6 @@
     -->
   </div>
 </section>
-  </div>
-</section>
 
 <!-- Contact Section -->
 <section id="contact" class="py-12 px-4 sm:px-8 md:px-20 bg-[#0D1117] text-white">
@@ -376,15 +396,19 @@
       <ul class="space-y-3 text-sm">
         <li class="flex items-center space-x-2">
           <i data-feather="mail" class="text-green-400"></i>
-          <span>Najeelsharif08@gmail.com</span>
+            <a href="mailto:Najeelsharif08@gmail.com"
+             class="hover:underline text-white break-all"
+             aria-label="Send email to Najeel Sharif">
+                 Najeelsharif08@gmail.com
+            </a>
         </li>
         <li class="flex items-center space-x-2">
           <i data-feather="linkedin" class="text-green-400"></i>
-          <a href="https://www.linkedin.com/in/najeel-sharif-b942b3288/" class="hover:underline">Najeel-Sharif</a>
+          <a href="https://www.linkedin.com/in/najeel-sharif-b942b3288/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile" class="hover:underline">Najeel-Sharif</a>
         </li>
         <li class="flex items-center space-x-2">
           <i data-feather="github" class="text-green-400"></i>
-          <a href="https://github.com/Najeel08" class="hover:underline">GitHub: Najeel08</a>
+          <a href="https://github.com/Najeel08" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile" class="hover:underline">GitHub: Najeel08</a>
         </li>
       </ul>
     </div>
@@ -394,7 +418,7 @@
   <!-- Error Message -->
   <div id="form-errors" class="hidden mb-4 text-red-400 text-sm"></div>
 
-  <form id="Contact form"
+  <form id="contact-form"
     action="https://formspree.io/f/xldnegbj"
     method="POST"
     class="space-y-4"
@@ -443,7 +467,7 @@
 </div>
 
 <!-- Footer -->
-<p class="text-center text-xs text-gray-500 mt-12">&copy; 2025 Najeel Sharif. All rights reserved. Building a safer digital tomorrow, today.</p>
+<p class="text-center text-xs text-gray-500 mt-12">&copy; 2026 Najeel Sharif. All rights reserved. Building a safer digital tomorrow, today.</p>
 
 <!-- Feather Icons -->
 <script src="https://unpkg.com/feather-icons"></script>
@@ -460,35 +484,60 @@
   });
 </script>
 
-<!-- ✅ Contact Form JavaScript with Validation, Honeypot, reCAPTCHA -->
+<!-- Contact Form + Validation + Honeypot + Mobile Menu -->
 <script>
-  const form = document.getElementById("contact-form");
-  const errorsDiv = document.getElementById("form-errors");
-  const successModal = document.getElementById("success-modal");
-  const closeModalBtn = successModal.querySelector("button");
+  
+// Mobile Hamburger Menu
+const menuBtn = document.getElementById("menu-btn");
+const mobileMenu = document.getElementById("mobile-menu");
+
+if (menuBtn && mobileMenu) {
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  document.querySelectorAll("#mobile-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  });
+}
+
+// Contact Form
+const form = document.getElementById("contact-form");
+const errorsDiv = document.getElementById("form-errors");
+const successModal = document.getElementById("success-modal");
+const closeModalBtn = successModal ? successModal.querySelector("button") : null;
+
+if (form && successModal && closeModalBtn) {
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
+
     errorsDiv.classList.add("hidden");
     errorsDiv.textContent = "";
 
     const name = form.name.value.trim();
     const email = form.email.value.trim();
     const message = form.message.value.trim();
-    const honeypot = form._gotcha.value; // bot trap
+    const honeypot = form._gotcha.value;
 
+    // Empty field validation
     if (!name || !email || !message) {
       errorsDiv.textContent = "Please fill out all fields.";
       errorsDiv.classList.remove("hidden");
       return;
     }
 
+    // Honeypot bot check
     if (honeypot) {
-      console.warn("Bot detected via honeypot.");
+      console.warn("Bot detected.");
       return;
     }
 
+    // Email validation
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
     if (!emailPattern.test(email)) {
       errorsDiv.textContent = "Please enter a valid email address.";
       errorsDiv.classList.remove("hidden");
@@ -501,7 +550,7 @@
       const response = await fetch(form.action, {
         method: "POST",
         body: formData,
-        headers: { 'Accept': 'application/json' }
+        headers: { Accept: "application/json" }
       });
 
       if (response.ok) {
@@ -511,18 +560,37 @@
         errorsDiv.textContent = "Oops! Something went wrong.";
         errorsDiv.classList.remove("hidden");
       }
+
     } catch (error) {
       errorsDiv.textContent = "Error submitting form. Try again.";
       errorsDiv.classList.remove("hidden");
       console.error(error);
     }
+
   });
 
-  closeModalBtn.addEventListener('click', () => {
-    successModal.classList.add('hidden');
+  // Close popup button
+  closeModalBtn.addEventListener("click", () => {
+    successModal.classList.add("hidden");
   });
+
+  // Close by clicking outside popup
+  successModal.addEventListener("click", (e) => {
+    if (e.target === successModal) {
+      successModal.classList.add("hidden");
+    }
+  });
+
+  // Close by ESC key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      successModal.classList.add("hidden");
+    }
+  });
+
+}
+
 </script>
-
 </body>
 </html>
 
