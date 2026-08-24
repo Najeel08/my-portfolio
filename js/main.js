@@ -109,13 +109,36 @@
     });
 
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !successModal.classList.contains("hidden")) {
+      if (successModal.classList.contains("hidden")) {
+        return;
+      }
+
+      if (event.key === "Escape") {
         closeSuccessModal();
+        return;
+      }
+
+      if (event.key === "Tab") {
+        const focusable = successModal.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) {
+          return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     });
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    initContactForm();
-  });
+  initContactForm();
 })();

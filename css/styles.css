@@ -1,6 +1,7 @@
 /* Hallmark - macrostructure: static portfolio - tone: technical/dark - anchor hue: green */
 :root {
   --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
   --color-page: #0d1117;
   --color-panel: #161b22;
   --color-panel-strong: #1f2937;
@@ -62,6 +63,11 @@ svg {
   display: block;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -80,7 +86,10 @@ textarea:focus-visible {
   outline-offset: 3px;
 }
 
-.hidden,
+.hidden:not(.modal) {
+  display: none !important;
+}
+
 .svg-sprite {
   display: none !important;
 }
@@ -98,6 +107,9 @@ textarea:focus-visible {
 }
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -114,7 +126,7 @@ textarea:focus-visible {
   gap: var(--space-2);
   color: var(--color-accent);
   font-size: 1.125rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .brand:hover {
@@ -128,8 +140,17 @@ textarea:focus-visible {
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-4);
-  color: var(--color-muted);
-  font-size: 0.875rem;
+  color: var(--color-ink);
+  font-size: 0.9375rem;
+}
+
+.site-nav a:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.site-nav a {
+  padding: var(--space-2) var(--space-1);
 }
 
 .button {
@@ -140,7 +161,7 @@ textarea:focus-visible {
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
   font: inherit;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   line-height: 1.1;
   white-space: nowrap;
@@ -227,6 +248,7 @@ textarea:focus-visible {
 
 .hero h1 {
   margin: 0 0 var(--space-2);
+  font-family: var(--font-heading);
   font-size: clamp(2.75rem, 12vw, 3.75rem);
   font-weight: 800;
   line-height: 1;
@@ -256,7 +278,7 @@ textarea:focus-visible {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: linear-gradient(90deg, var(--color-blue), #000000);
+  background: linear-gradient(90deg, var(--color-blue), var(--color-page));
   filter: blur(2rem);
   animation: pulse 2s var(--ease-out) infinite;
 }
@@ -273,20 +295,19 @@ textarea:focus-visible {
 .section {
   padding: var(--space-12) var(--space-4);
   background: var(--color-page);
+  scroll-margin-top: 5rem;
 }
 
 .section h2 {
   margin: 0 0 var(--space-8);
   color: var(--color-accent);
+  font-family: var(--font-heading);
   font-size: clamp(1.5rem, 6vw, 2.25rem);
   font-weight: 800;
   line-height: 1.2;
   text-align: center;
 }
 
-#experience h2 {
-  color: var(--color-ink);
-}
 
 .timeline,
 .project-grid,
@@ -339,6 +360,7 @@ textarea:focus-visible {
 
 .card h3 {
   color: var(--color-ink);
+  font-family: var(--font-heading);
   font-size: 1.125rem;
   line-height: 1.25;
 }
@@ -346,7 +368,7 @@ textarea:focus-visible {
 .card p {
   margin: var(--space-2) 0 0;
   color: var(--color-muted);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
 }
 
 .accent-text {
@@ -355,7 +377,7 @@ textarea:focus-visible {
 
 .meta-text {
   color: var(--color-subtle) !important;
-  font-size: 0.75rem !important;
+  font-size: 0.8125rem !important;
 }
 
 .experience-card,
@@ -389,10 +411,6 @@ textarea:focus-visible {
   gap: var(--space-6);
 }
 
-.project-card {
-  max-width: 42rem;
-}
-
 .tag-list {
   display: flex;
   flex-wrap: wrap;
@@ -407,7 +425,7 @@ textarea:focus-visible {
   color: var(--color-muted);
   background: var(--color-panel-strong);
   border-radius: var(--radius-pill);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
 }
 
 .skills-grid {
@@ -429,7 +447,7 @@ textarea:focus-visible {
 }
 
 .skill-card p {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 600;
 }
 
@@ -440,13 +458,25 @@ textarea:focus-visible {
 }
 
 .contact-card {
-  display: grid;
-  gap: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.contact-card p {
+  margin-bottom: var(--space-2);
+}
+
+.card.contact-card h3 {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  margin-bottom: var(--space-3);
+  font-size: 1.375rem;
 }
 
 .contact-list {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-2);
   padding: 0;
   margin: 0;
   list-style: none;
@@ -457,7 +487,7 @@ textarea:focus-visible {
   align-items: center;
   gap: var(--space-2);
   color: var(--color-ink);
-  font-size: 0.875rem;
+  font-size: 1rem;
 }
 
 .form-card form {
@@ -468,7 +498,7 @@ textarea:focus-visible {
 .form-error {
   margin-bottom: var(--space-4);
   color: var(--color-error);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
 }
 
 .form-group {
@@ -477,7 +507,7 @@ textarea:focus-visible {
 }
 
 .form-group label {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 600;
 }
 
@@ -492,10 +522,11 @@ textarea:focus-visible {
   font: inherit;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
   border-color: var(--color-accent);
-  outline: none;
+  outline: 3px solid var(--color-accent);
+  outline-offset: 1px;
 }
 
 .form-group textarea {
@@ -511,6 +542,17 @@ textarea:focus-visible {
   justify-content: center;
   padding: var(--space-4);
   background: var(--color-backdrop);
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    visibility var(--dur-base) var(--ease-out);
+}
+
+.modal.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .modal-panel {
@@ -530,13 +572,13 @@ textarea:focus-visible {
 .modal-panel p {
   margin: 0 0 var(--space-4);
   color: var(--color-muted);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
 }
 
 .site-footer {
   padding: var(--space-8) var(--space-6);
   color: var(--color-subtle);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   text-align: center;
 }
 
@@ -554,6 +596,44 @@ textarea:focus-visible {
   50% {
     opacity: 0.46;
     transform: scale(1.04);
+  }
+}
+
+@media (max-width: 399px) {
+  .site-header {
+    padding: var(--space-3) var(--space-4);
+    gap: var(--space-2);
+  }
+
+  .site-nav {
+    gap: var(--space-3);
+    font-size: 0.8125rem;
+  }
+
+  .hero {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .section {
+    padding: var(--space-8) var(--space-3);
+  }
+
+  .card {
+    padding: var(--space-4);
+  }
+
+  .skill-card {
+    min-height: 6rem;
+    padding: var(--space-4);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .contact-list li {
+    word-break: break-word;
   }
 }
 
