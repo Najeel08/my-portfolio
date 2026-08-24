@@ -87,14 +87,29 @@
           headers: { Accept: "application/json" },
         });
 
+        const data = await response.json().catch(() => null);
+
         if (response.ok) {
           form.reset();
           openSuccessModal();
         } else {
-          showError("Oops! Something went wrong. Please try again.");
+          if (data && data.error && data.error.includes("reCAPTCHA")) {
+            // Formspree requires standard POST when reCAPTCHA is enabled on dashboard
+            form.submit();
+            return;
+          }
+          if (data && data.error) {
+            showError(data.error);
+          } else if (data && data.errors && data.errors.length > 0) {
+            showError(data.errors.map((err) => err.message).join(", "));
+          } else {
+            showError("Oops! Something went wrong. Please try again.");
+          }
         }
       } catch {
-        showError("Error submitting form. Try again.");
+        // Fallback: If network or fetch is blocked, submit naturally
+        form.submit();
+        return;
       } finally {
         setSubmitting(false);
       }
