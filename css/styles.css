@@ -775,6 +775,12 @@ textarea:focus-visible {
   }
 }
 
+@media (max-width: 767px) {
+  .section {
+    scroll-margin-top: 11rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
